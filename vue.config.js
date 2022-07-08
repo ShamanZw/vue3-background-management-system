@@ -4,6 +4,15 @@ function resolve(dir) {
 }
 
 module.exports = {
+  devServer: {
+    proxy: {
+      // 当地址中包含/api时，触发代理
+      '/api': {
+        target: 'https://api.imooc-admin.lgdsunday.club/',
+        changeOrigin: true
+      }
+    }
+  },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
