@@ -99,9 +99,6 @@ $cursor: #fff;
   }
 
   .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 6px;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;
