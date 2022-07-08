@@ -24,11 +24,14 @@
         <el-input
           placeholder="password"
           name="password"
+          :type="passwordType"
           v-model="loginForm.password"
         ></el-input>
         <span class="show-pwd">
-          <span class="svg-container">
-            <svg-icon icon="eye"></svg-icon>
+          <span class="svg-container" @click="onChangePwdType">
+            <svg-icon
+              :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+            ></svg-icon>
           </span>
         </span>
       </el-form-item>
@@ -65,6 +68,18 @@ const loginRules = ref({
     }
   ]
 })
+
+// 处理密码框文本显示
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  // 当passwordType的值为password的时候，改为text
+  // 使用ref声明的数据，在script中需要加value来获取值，在template中使用，不需要加value
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
