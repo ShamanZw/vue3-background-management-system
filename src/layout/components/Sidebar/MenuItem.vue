@@ -21,4 +21,9 @@ defineProps({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#app .sidebar-container .sub-el-icon {
+  margin-left: 0;
+  margin-right: 16px;
+}
+</style>
