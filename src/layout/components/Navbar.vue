@@ -13,7 +13,8 @@
             :size="40"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
-          <i class="el-icon-s-tools"></i>
+          <!-- <i class="el-icon-s-tools"></i> -->
+          <Setting class="el-icon-s-tools"></Setting>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
@@ -39,6 +40,7 @@ import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
+import { Setting } from '@element-plus/icons-vue'
 
 const store = useStore()
 const logout = () => {
@@ -96,6 +98,13 @@ const logout = () => {
         .el-avatar {
           --el-avatar-background-color: none;
           margin-right: 12px;
+        }
+
+        .el-icon-s-tools {
+          position: absolute;
+          width: 15px;
+          right: -8px;
+          top: 25px;
         }
       }
     }
