@@ -4,6 +4,7 @@
     <hamburger class="hamburger-container" />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <ThemeSelect class="right-menu-item hover-effect"></ThemeSelect>
       <LangSelect class="right-menu-item hover-effect"></LangSelect>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -40,6 +41,7 @@ import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
+import ThemeSelect from '@/components/ThemeSelect'
 import { Setting } from '@element-plus/icons-vue'
 
 const store = useStore()
