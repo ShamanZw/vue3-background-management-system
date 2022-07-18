@@ -5,11 +5,12 @@
   <!-- <svg-icon v-else :icon="icon"></svg-icon> -->
   <svg-icon :icon="icon"></svg-icon>
   <!-- 文本 -->
-  <span>{{ title }}</span>
+  <span>{{ generateTitle(title) }}</span>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
+import { generateTitle } from '@/utils/i18n'
 defineProps({
   title: {
     type: String,
