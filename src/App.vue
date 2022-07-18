@@ -1,6 +1,6 @@
 <template>
   <el-config-provider :locale="store.getters.language === 'en' ? en : zhCn">
-    <router-view />
+    <router-view></router-view>
   </el-config-provider>
 </template>
 

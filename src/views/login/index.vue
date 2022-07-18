@@ -7,7 +7,8 @@
       :rules="loginRules"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <LangSelect class="lang-select"></LangSelect>
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -46,28 +47,36 @@
         style="width: 100%; margin-bottom: 30px"
         :loading="loading"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import LangSelect from '@/components/LangSelect'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
+import { watchSwitchLang } from '@/utils/i18n'
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
 })
 // 验证规则
+const i18n = useI18n()
 const loginRules = ref({
   username: [
     {
       required: true,
       trigger: 'blur',
-      message: '用户名为必填项'
+      message: computed(() => {
+        return i18n.t('msg.login.usernameRule')
+      })
     }
   ],
   password: [
@@ -77,6 +86,11 @@ const loginRules = ref({
       validator: validatePassword()
     }
   ]
+})
+
+// 监听语言变化，重新进行表单校验
+watchSwitchLang(() => {
+  loginFromRef.value.validate()
 })
 
 // 处理密码框文本显示
@@ -157,6 +171,12 @@ $cursor: #fff;
         caret-color: $cursor;
       }
     }
+
+    .tips {
+      font-size: 16px;
+      color: white;
+      line-height: 24px;
+    }
   }
 
   .svg-container {
@@ -183,6 +203,17 @@ $cursor: #fff;
     color: $dark_gray;
     cursor: pointer;
     user-select: none;
+  }
+
+  ::v-deep .lang-select {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    background-color: #fff;
+    font-size: 22px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 </style>
