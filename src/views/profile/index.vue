@@ -2,7 +2,6 @@
   <div class="">
     {{ $t('msg.test') }}
     <div class="demo-pagination-block">
-      <div class="demonstration">Total item count</div>
       <el-pagination
         v-model:currentPage="currentPage1"
         :page-size="100"
@@ -14,6 +13,15 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
+
+      <el-row>
+        <el-button>Default</el-button>
+        <el-button type="primary">Primary</el-button>
+        <el-button type="success">Success</el-button>
+        <el-button type="info">Info</el-button>
+        <el-button type="warning">Warning</el-button>
+        <el-button type="danger">Danger</el-button>
+      </el-row>
     </div>
   </div>
 </template>

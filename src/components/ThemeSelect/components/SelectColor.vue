@@ -24,6 +24,7 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 defineProps({
   modelValue: {
@@ -63,8 +64,13 @@ const closed = () => {
 
 /**
  * 确定按钮点击事件
+ * 1. 修改主题色
+ * 2. 保存最新的主题色
+ * 3. 关闭 dialog
  */
-const confirm = () => {
+const confirm = async () => {
+  const newStyle = await generateNewStyle(myColor.value)
+  writeNewStyle(newStyle)
   store.commit('theme/setMainColor', myColor.value)
   closed()
 }
