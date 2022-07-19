@@ -6,7 +6,7 @@ export function generateTitle(title) {
 }
 
 /**
- *
+ * 监听语言变化
  * @param  {...any} cbs 所有的回调
  */
 export function watchSwitchLang(...cbs) {
