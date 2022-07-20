@@ -5,7 +5,49 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { isTags } from '@/utils/tags'
+import { useStore } from 'vuex'
+import { generateTitle } from '@/utils/i18n'
+
+/**
+ * 生成title
+ */
+const getTitle = (route) => {
+  let title = ''
+  if (!route.meta) {
+    // 处理无 meta 的路由
+    const pathArr = route.path.split('/')
+    title = pathArr[pathArr.length - 1]
+  } else {
+    title = generateTitle(route.meta.title)
+  }
+  return title
+}
+
+const store = useStore()
+const route = useRoute()
+watch(
+  route,
+  (to, from) => {
+    // 并不是所有的路由都需要保存
+    if (!isTags(to.path)) return
+    const { fullPath, meta, name, params, path, query } = to
+    store.commit('app/addTagsViewList', {
+      fullPath,
+      meta,
+      name,
+      params,
+      path,
+      query,
+      title: getTitle(to)
+    })
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style lang="scss" scoped>
