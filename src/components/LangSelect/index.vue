@@ -6,7 +6,9 @@
   >
     <div>
       <el-tooltip content="国际化" :effect="effect">
-        <svg-icon icon="language"></svg-icon>
+        <a id="guide-lang">
+          <svg-icon icon="language"></svg-icon>
+        </a>
       </el-tooltip>
     </div>
     <template #dropdown>

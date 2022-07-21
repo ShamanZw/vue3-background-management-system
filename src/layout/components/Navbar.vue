@@ -2,8 +2,9 @@
   <div class="navbar">
     <!-- 汉堡按钮 -->
     <hamburger class="hamburger-container" />
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <Guide class="right-menu-item hover-effect" />
       <HeaderSearch class="right-menu-item hover-effect"></HeaderSearch>
       <Screenfull class="right-menu-item hover-effect"></Screenfull>
       <ThemeSelect class="right-menu-item hover-effect"></ThemeSelect>
@@ -46,6 +47,7 @@ import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
 import Screenfull from '@/components/Screenfull'
 import HeaderSearch from '@/components/HeaderSearch'
+import Guide from '@/components/Guide'
 import { Setting } from '@element-plus/icons-vue'
 
 const store = useStore()

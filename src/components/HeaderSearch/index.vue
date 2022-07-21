@@ -3,8 +3,9 @@
     :class="{ show: isShow }"
     class="header-search"
     @click.stop="onShowClick"
+    id="guide-search"
   >
-    <svg-icon id="guide-search" class-name="search-icon" icon="search" />
+    <svg-icon class-name="search-icon" icon="search" />
     <el-select
       ref="headerSearchSelectRef"
       class="header-search-select"

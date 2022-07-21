@@ -5,6 +5,7 @@
   >
     <!-- 左侧 menu -->
     <sidebar
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     />
