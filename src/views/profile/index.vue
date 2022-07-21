@@ -31,7 +31,9 @@ import Chapter from './components/Chapter.vue'
 import Author from './components/Author.vue'
 import { feature } from '@/api/user'
 import { watchSwitchLang } from '@/utils/i18n'
+import { useStore } from 'vuex'
 
+const store = useStore()
 const activeName = ref('feature')
 
 const featureData = ref([])
@@ -41,6 +43,11 @@ const getFeatureData = async () => {
 getFeatureData()
 // 监听语言切换
 watchSwitchLang(getFeatureData)
+watchSwitchLang(() => {
+  if (store.getters.token) {
+    store.dispatch('user/getUserInfo')
+  }
+})
 </script>
 
 <style lang="scss" scoped>

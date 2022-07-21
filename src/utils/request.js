@@ -10,6 +10,8 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
+    // 添加icode
+    config.headers.icode = 'BD9A5B168A1AE047'
     // 在这里统一注入 token
     if (store.getters.token) {
       if (isCheckTimeout()) {
@@ -27,13 +29,6 @@ service.interceptors.request.use(
     return Promise.reject(error)
   }
 )
-// 请求拦截器
-service.interceptors.request.use((config) => {
-  // 添加icode
-  config.headers.icode = 'BD9A5B168A1AE047'
-  // 必须返回config
-  return config
-})
 
 // 响应拦截器
 service.interceptors.response.use(

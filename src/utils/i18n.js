@@ -2,6 +2,7 @@ import { watch } from 'vue'
 import store from '@/store'
 import i18n from '@/i18n'
 export function generateTitle(title) {
+  i18n.global.locale.value = store.getters.language
   return i18n.global.t('msg.route.' + title)
 }
 
