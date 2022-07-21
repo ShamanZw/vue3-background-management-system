@@ -9,6 +9,9 @@ export const feature = () => {
   })
 }
 
+/**
+ * 获取章节
+ */
 export const chapter = () => {
   return request({
     url: '/user/chapter'
