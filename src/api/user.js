@@ -8,3 +8,9 @@ export const feature = () => {
     url: '/user/feature'
   })
 }
+
+export const chapter = () => {
+  return request({
+    url: '/user/chapter'
+  })
+}
