@@ -86,7 +86,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import { useRouter } from 'vue-router'
@@ -133,6 +133,9 @@ const router = useRouter()
 const onImportExcelClick = () => {
   router.push('/user/import')
 }
+
+// 处理导入用户后数据不重新加载的问题
+onActivated(getListData)
 </script>
 
 <style lang="scss" scoped>
