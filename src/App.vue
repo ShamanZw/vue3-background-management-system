@@ -9,7 +9,7 @@ import { useStore } from 'vuex'
 import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
-// import { watchSwitchLang } from '@/utils/i18n'
+import { watchSwitchLang } from '@/utils/i18n'
 
 const store = useStore()
 generateNewStyle(store.getters.mainColor).then((newStyle) => {
@@ -19,11 +19,11 @@ generateNewStyle(store.getters.mainColor).then((newStyle) => {
 /**
  * 监听 语言变化，重新获取个人信息
  */
-// watchSwitchLang(() => {
-//   if (store.getters.token) {
-//     store.dispatch('user/getUserInfo')
-//   }
-// })
+watchSwitchLang(() => {
+  if (store.getters.token) {
+    store.dispatch('user/getUserInfo')
+  }
+})
 </script>
 
 <style></style>

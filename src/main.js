@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 import store from './store'
+import router from './router'
 import i18n from './i18n'
 import installElementPlus from './plugins/element'
 // 初始化样式表
