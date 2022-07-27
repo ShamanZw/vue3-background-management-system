@@ -51,10 +51,11 @@
 </template>
 
 <script setup>
-import { ref, onActivated } from 'vue'
+import { ref, onActivated, onMounted } from 'vue'
 import { getArticleList } from '@/api/article'
 import { watchSwitchLang } from '@/utils/i18n'
 import { dynamicData, selectDynamicLabel, tableColumns } from './dynamic'
+import { tableRef, initSortable } from './sortable'
 
 // 数据相关
 const tableData = ref([])
@@ -76,6 +77,11 @@ const getListData = async () => {
 watchSwitchLang(getListData)
 // 处理数据不重新加载的问题
 onActivated(getListData)
+
+// 表格拖拽相关
+onMounted(() => {
+  initSortable(tableData, getListData)
+})
 
 /**
  * size 改变触发
@@ -123,5 +129,11 @@ const onRemoveClick = (row) => {}
     margin-top: 20px;
     text-align: center;
   }
+}
+
+::v-deep .sortable-ghost {
+  opacity: 0.6;
+  color: #fff !important;
+  background: #304156 !important;
 }
 </style>
